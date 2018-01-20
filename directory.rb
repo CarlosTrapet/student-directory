@@ -63,7 +63,6 @@ def print(students)
 end
 
 
-
 # turns the hardcoded array of students  into an interactive array based on user input
 def input_students
   puts "Please enter the names of the students"
