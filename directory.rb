@@ -55,9 +55,11 @@ end
 
 # prints students with their index starting with 1
 def print(students)
-  students.each_with_index { |item, index|
-    puts "#{index + 1}. #{item[:name].capitalize}, #{item[:cohort].capitalize} cohort".center(150)
-  }
+  if students.count > 0
+    students.each_with_index { |item, index|
+      puts "#{index + 1}. #{item[:name].capitalize}, #{item[:cohort].capitalize} cohort".center(150)
+    }
+  end
 end
 
 
