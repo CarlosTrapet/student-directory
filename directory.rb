@@ -20,11 +20,35 @@ def print_header
   puts "--------------"
 end
 
+def print_footer(names)
+  if names.count > 1 
+    puts "Overall, we have #{names.count} villains enrolled in our Villains Academy"
+  else puts "Overall, we have #{names.count} villain enrolled in our Villains Academy"
+  end
+end
+
 =begin
-# prints students that start with the letter "D"
-def print(students)
-  students.each do |student|
-    puts "#{student[:name]}, #{student[:cohort]} cohort" if student[:name].length < 12
+def print_cohorts(students)
+  november = []
+  december = []
+  january = []
+  students.each do |item|
+    if item[:cohort] = november
+      november << item
+    elsif item[:cohort] = december
+      december << item
+    elsif item[:cohort] = january
+      january << item
+    end    
+  end
+  november.each do |student|
+    puts "#{student[:name]}"
+  end
+  december.each do |student|
+    puts "#{student[:name]}"
+  end
+  january.each do |student|
+    puts "#{student[:name]}"
   end
 end
 =end
@@ -32,15 +56,12 @@ end
 # prints students with their index starting with 1
 def print(students)
   students.each_with_index { |item, index|
-    puts "#{index + 1}. #{item[:name]}, from #{item[:origin].capitalize}, #{item[:cohort]} cohort".center(150)
+    puts "#{index + 1}. #{item[:name].capitalize}, #{item[:cohort].capitalize} cohort".center(150)
   }
 end
 
-def print_footer(names)
-puts "Overall, we have #{names.count} villains enrolled in our Villains Academy"
-end
 
-=begin
+
 # turns the hardcoded array of students  into an interactive array based on user input
 def input_students
   puts "Please enter the names of the students"
@@ -53,15 +74,19 @@ def input_students
   while !name.empty? do
     students << {name: name, cohort: cohort.to_sym}
     cohort = "november" if cohort.empty?
-    puts "Now we have #{students.count} students"
+    if students.count == 1
+      puts "Now we have #{students.count} student"
+    else 
+      puts "Now we have #{students.count} students"
+    end 
     name = gets.chomp
     cohort = gets.chomp
   end
   students
 end
-=end
 
 
+students = input_students
 print_header
 print(students)
 print_footer(students)
